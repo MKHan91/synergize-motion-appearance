@@ -144,9 +144,9 @@ if __name__ == "__main__":
 
     parser.add_argument("--image_shape", default=(256, 256), type=lambda x: tuple(map(int, x.split(','))),
                         help="Image shape")
-    parser.add_argument("--increase", default=0.1, type=float, help='Increase bbox by this amount')
-    parser.add_argument("--iou_with_initial", type=float, default=0.25, help="The minimal allowed iou with inital bbox")
-    parser.add_argument("--inp", required=True, help='Input video')
+    parser.add_argument("--increase", default=0.01, type=float, help='Increase bbox by this amount')
+    parser.add_argument("--iou_with_initial", type=float, default=0.125, help="The minimal allowed iou with inital bbox")
+    parser.add_argument("--inp", default='/home/deepixel/GITHUB/data/video/608434_Business_Meeting_1920x1080.mp4', help='Input video')
     parser.add_argument("--min_frames", type=int, default=150,  help='Minimum number of frames')
     parser.add_argument("--cpu", dest="cpu", action="store_true", help="cpu mode.")
 

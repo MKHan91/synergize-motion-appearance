@@ -8,6 +8,9 @@ import math
 
 from basicsr.utils.registry import ARCH_REGISTRY
 import collections
+import cv2
+
+
 
 @ARCH_REGISTRY.register()
 class DenseMotionNetwork(nn.Module):
@@ -125,7 +128,7 @@ class DenseMotionNetwork(nn.Module):
         deformed_source = self.create_deformed_source_image(source_image, sparse_motion)
         out_dict['sparse_motion'] = sparse_motion
         out_dict['sparse_deformed'] = deformed_source
-
+        
         input = torch.cat([heatmap_representation, deformed_source], dim=2)
         input = input.view(bs, -1, h, w)
 
@@ -144,6 +147,14 @@ class DenseMotionNetwork(nn.Module):
         out_dict['driving_kp_heatmap'] = self.create_driving_heatmap_representations(source_image, kp_driving) # b, num_kp+1, h, w
         out_dict['source'] = source_image
 
+
+        # # -------------- added -------------- 
+        # flow = visualize_motion(flow=deformation)
+        # cv2.imwrite("motion_flow.png", flow)
+        # # ------------------------------------------
+        
+        
+        
         # Sec. 3.2 in the paper
         if self.occlusion:
             if self.multi_mask:

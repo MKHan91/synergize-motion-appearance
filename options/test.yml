@@ -67,11 +67,11 @@ network_motion_estimator:
 
 # path
 path:
-  pretrain_network_g: ./pretrained_models/net_g_latest.pth 
+  pretrain_network_g: /home/dev/synergize-motion-appearance/pretrained_models/net_g_latest.pth 
   param_key_g: params_ema
   strict_load_g: true
 
-  pretrain_network_motion_estimator: ./pretrained_models/net_motion_estimator_latest.pth 
+  pretrain_network_motion_estimator: /home/dev/synergize-motion-appearance/pretrained_models/net_motion_estimator_latest.pth 
   strict_load_motion_estimator: true
 
   save_path: ./test_log
